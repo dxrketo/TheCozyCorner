@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#26352e">
+  <meta name="description" content="The Cozy Corner — guest guide for your stay in Bogotá.">
+
+  <title>The Cozy Corner · Guest Guide</title>
+
+  <style>
+    :root{
+      --bg:#f5f2ec;
+      --card:#fffdf9;
+      --ink:#252723;
+      --muted:#73766f;
+      --green:#26352e;
+      --green-2:#35483e;
+      --cream:#eee7da;
+      --line:#e4ded3;
+      --shadow:0 12px 35px rgba(39,42,36,.08);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{color:inherit}
+
+    .hero{
+      min-height:520px;
+      padding:28px 20px 36px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(255,255,255,.22), transparent 30%),
+        linear-gradient(145deg,#1f2d27,#506357 55%,#d8cdbb);
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:360px;height:360px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:50%;
+      right:-120px;top:-100px;
+      box-shadow:0 0 0 40px rgba(255,255,255,.04),
+                 0 0 0 80px rgba(255,255,255,.03);
+    }
+
+    .hero-inner{
+      width:min(980px,100%);
+      margin:auto;
+      position:relative;
+      z-index:1;
+      color:white;
+    }
+
+    .topbar{
+      position:absolute;
+      top:20px;
+      right:20px;
+      z-index:5;
+    }
+
+    .lang-btn{
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.12);
+      color:white;
+      border-radius:999px;
+      padding:9px 14px;
+      cursor:pointer;
+      font-weight:700;
+      backdrop-filter:blur(8px);
+      margin:0;
+    }
+
+    .lang-btn:hover{
+      background:rgba(255,255,255,.2);
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      opacity:.8;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(52px,12vw,96px);
+      line-height:.92;
+      font-weight:500;
+      letter-spacing:-3px;
+      max-width:700px;
+    }
+
+    .hero-sub{
+      margin-top:22px;
+      font-size:19px;
+      max-width:560px;
+      opacity:.92;
+    }
+
+    .hero-pill{
+      display:inline-flex;
+      margin-top:28px;
+      padding:10px 15px;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:999px;
+      background:rgba(255,255,255,.1);
+      backdrop-filter:blur(8px);
+      font-size:14px;
+      min-width:205px;
+      min-height:48px;
+      box-sizing:border-box;
+    }
+
+    .wrap{
+      width:min(980px,100%);
+      margin:auto;
+      padding:0 20px 70px;
+    }
+
+    .welcome{
+      margin-top:-45px;
+      position:relative;
+      z-index:2;
+      background:var(--card);
+      border:1px solid rgba(0,0,0,.04);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .welcome h2,.section-title{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:500;
+    }
+
+    .welcome h2{font-size:30px}
+    .welcome p{color:var(--muted);margin-top:7px}
+
+    .quick{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .quick a{
+      text-decoration:none;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      transition:.15s ease;
+    }
+    .quick a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .quick .emoji{font-size:24px}
+    .quick strong{display:block;margin-top:9px;font-size:14px}
+    .quick span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+    section{margin-top:55px}
+    .section-kicker{
+      color:#6f796f;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:11px;
+      font-weight:700;
+      margin-bottom:5px;
+    }
+    .section-title{font-size:34px;margin-bottom:18px}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:25px;
+      margin-bottom:14px;
+    }
+
+    .card h3{font-size:19px;margin-bottom:7px}
+    .card p{color:var(--muted)}
+    .card + .card{margin-top:14px}
+
+    .wifi{
+      background:var(--green);
+      color:white;
+      border:0;
+    }
+    .wifi p{color:rgba(255,255,255,.72)}
+    .wifi-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:18px;
+    }
+    .wifi-field{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      padding:15px;
+    }
+    .wifi-field small{display:block;color:rgba(255,255,255,.62);margin-bottom:5px}
+    .wifi-value{
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+      word-break:break-all;
+    }
+
+    button,.btn{
+      border:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      text-decoration:none;
+      margin-top:15px;
+      padding:11px 15px;
+      border-radius:13px;
+      background:var(--green);
+      color:white;
+      font-weight:700;
+      font-size:14px;
+    }
+    .wifi button{background:white;color:var(--green)}
+    .btn.light{background:var(--cream);color:var(--ink)}
+
+    .two{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    /* Cards inside two-column sections must line up perfectly */
+    .two > .card{
+      margin-top:0;
+      margin-bottom:0;
+      height:100%;
+    }
+
+    .place{
+      display:flex;
+      gap:15px;
+      align-items:flex-start;
+    }
+    .place-icon{
+      width:48px;height:48px;
+      display:grid;place-items:center;
+      flex:none;
+      border-radius:15px;
+      background:var(--cream);
+      font-size:23px;
+    }
+
+    .steps{
+      counter-reset:step;
+      list-style:none;
+    }
+    .steps li{
+      counter-increment:step;
+      position:relative;
+      padding:0 0 20px 52px;
+      color:var(--muted);
+    }
+    .steps li:before{
+      content:counter(step);
+      position:absolute;
+      left:0;top:0;
+      width:34px;height:34px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--green);
+      color:white;
+      font-size:13px;
+      font-weight:700;
+    }
+    .steps strong{display:block;color:var(--ink);margin-bottom:3px}
+
+    .callout{
+      background:linear-gradient(135deg,#eae3d7,#f8f4ed);
+      border:0;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      padding:15px 20px 50px;
+      font-size:13px;
+    }
+
+    .top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:44px;height:44px;
+      border-radius:50%;
+      background:var(--green);
+      color:white;
+      display:grid;
+      place-items:center;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      z-index:10;
+    }
+
+    @media(max-width:760px){
+      .quick{grid-template-columns:repeat(2,1fr)}
+      .two{grid-template-columns:1fr}
+      .wifi-grid{grid-template-columns:1fr}
+      .hero{min-height:470px}
+    }
+
+    @media(max-width:420px){
+      .wrap{padding-left:14px;padding-right:14px}
+      .hero{padding-left:18px;padding-right:18px}
+      .welcome{padding:23px}
+      .card{padding:21px}
+      .quick a{padding:15px}
+      h1{letter-spacing:-2px}
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <header class="hero">
+    <div class="topbar">
+      <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">🇪🇸 Español</button>
+    </div>
+    <div class="hero-inner">
+      <div class="eyebrow" data-en="Guest guide · Bogotá, Colombia" data-es="Guía para huéspedes · Bogotá, Colombia"></div>
+      <h1>The Cozy<br>Corner</h1>
+      <p class="hero-sub" data-en="Your little home away from home — everything you need for a comfortable stay." data-es="Tu pequeño hogar lejos de casa — todo lo que necesitas para una estancia cómoda."></p>
+      <div class="hero-pill" data-en="🤍 Make yourself at home" data-es="🤍 Siéntete como en casa"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <div class="welcome">
+      <h2 data-en="Welcome to Bogotá" data-es="Bienvenido a Bogotá"></h2>
+      <p data-en="We're happy to have you here. Use this guide for Wi-Fi, the apartment, laundry, TV, nearby places and ideas for exploring the city." data-es="Nos alegra tenerte aquí. Usa esta guía para consultar el Wi-Fi, el apartamento, la lavandería, el TV, lugares cercanos e ideas para explorar la ciudad."></p>
+    </div>
+
+    <nav class="quick" aria-label="Quick access">
+      <a href="#wifi"><div class="emoji">📶</div><strong data-en="Wi-Fi" data-es="Wi-Fi"></strong><span data-en="Connect quickly" data-es="Conéctate rápidamente"></span></a>
+      <a href="#home"><div class="emoji">🏠</div><strong data-en="The apartment" data-es="El apartamento"></strong><span data-en="House information" data-es="Información del lugar"></span></a>
+      <a href="#tv"><div class="emoji">📺</div><strong data-en="TV &amp; Roku" data-es="TV y Roku"></strong><span data-en="How to use it" data-es="Cómo usarlo"></span></a>
+      <a href="#laundry"><div class="emoji">🧺</div><strong data-en="Laundry" data-es="Lavandería"></strong><span data-en="Shared area" data-es="Zona comunal"></span></a>
+      <a href="#arena"><div class="emoji">🎵</div><strong data-en="Movistar Arena" data-es="Movistar Arena"></strong><span data-en="Event guide" data-es="Guía para eventos"></span></a>
+      <a href="#food"><div class="emoji">🍽️</div><strong data-en="Eat nearby" data-es="Comer cerca"></strong><span data-en="Food, coffee &amp; groceries" data-es="Comida, café y supermercados"></span></a>
+      <a href="#bogota"><div class="emoji">🏙️</div><strong data-en="Explore Bogotá" data-es="Explora Bogotá"></strong><span data-en="Places to visit" data-es="Lugares para visitar"></span></a>
+      <a href="#help"><div class="emoji">💬</div><strong data-en="Need help?" data-es="¿Necesitas ayuda?"></strong><span data-en="Contact your host" data-es="Contacta al anfitrión"></span></a>
+    </nav>
+
+    <section id="wifi">
+      <div class="section-kicker" data-en="Stay connected" data-es="Mantente conectado"></div>
+      <h2 class="section-title" data-en="📶 Wi-Fi" data-es="📶 Wi-Fi"></h2>
+
+      <div class="card wifi">
+        <h3 data-en="Your internet connection" data-es="Tu conexión a internet"></h3>
+        <p data-en="Connect your phone, laptop or other devices to the apartment Wi-Fi." data-es="Conecta tu celular, computador u otros dispositivos al Wi-Fi del apartamento."></p>
+
+        <!-- Replace these two values -->
+        <div class="wifi-grid">
+          <div class="wifi-field">
+            <small data-en="Network" data-es="Red"></small>
+            <div class="wifi-value" id="wifiName">YOUR_WIFI_NAME</div>
+          </div>
+
+          <div class="wifi-field">
+            <small data-en="Password" data-es="Contraseña"></small>
+            <div class="wifi-value" id="wifiPassword">YOUR_WIFI_PASSWORD</div>
+          </div>
+        </div>
+
+        <button onclick="copyWifi()" data-en="📋 Copy Wi-Fi details" data-es="📋 Copiar datos del Wi-Fi"></button>
+        <div id="copyMessage" style="margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)"></div>
+      </div>
+    </section>
+
+    <section id="home">
+      <div class="section-kicker" data-en="Good to know" data-es="Información importante"></div>
+      <h2 class="section-title" data-en="🏠 The apartment" data-es="🏠 El apartamento"></h2>
+
+      <div class="card address-card" style="margin-bottom:14px;">
+        <h3 data-en="📍 Address" data-es="📍 Dirección"></h3>
+        <p><strong>The Cozy Corner</strong><br>Edificio Cubo<br>Calle 60 #35A-46, Apt. 504<br>Bogotá, Colombia</p>
+        <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=Edificio+Cubo%2C+Calle+60+%2335A-46%2C+Bogota%2C+Colombia" target="_blank" rel="noopener">
+          <span data-en="Open in Google Maps" data-es="Abrir en Google Maps"></span>
+        </a>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3 data-en="Check-in" data-es="Check-in"></h3>
+          <p data-en="Please follow the check-in instructions provided through Airbnb. Keep your access information private." data-es="Sigue las instrucciones de check-in proporcionadas a través de Airbnb. Mantén privada tu información de acceso."></p>
+        </div>
+
+        <div class="card">
+          <h3 data-en="Check-out" data-es="Check-out"></h3>
+          <p data-en="Please leave the apartment tidy, turn off lights and appliances, and make sure the door is properly locked." data-es="Deja el apartamento ordenado, apaga las luces y los electrodomésticos y asegúrate de cerrar bien la puerta."></p>
+        </div>
+      </div>
+
+      <div class="card callout">
+        <h3 data-en="🤍 A little request" data-es="🤍 Una pequeña petición"></h3>
+        <p data-en="Please treat The Cozy Corner with the same care you would give your own home. We hope you have a wonderful stay." data-es="Trata The Cozy Corner con el mismo cuidado que tendrías con tu propio hogar. Esperamos que tengas una excelente estancia."></p>
+      </div>
+    </section>
+
+    <section id="tv">
+      <div class="section-kicker" data-en="Entertainment" data-es="Entretenimiento"></div>
+      <h2 class="section-title" data-en="📺 TV & Roku" data-es="📺 TV y Roku"></h2>
+
+      <div class="card">
+        <h3 data-en="How to use the TV" data-es="Cómo usar el TV"></h3>
+
+        <ol class="steps">
+          <li>
+            <strong data-en="Turn on the TV" data-es="Enciende el TV"></strong>
+            <span data-en="Use the physical Roku remote provided in the apartment." data-es="Usa el control Roku físico disponible en el apartamento."></span>
+          </li>
+          <li>
+            <strong data-en="Choose an app" data-es="Elige una aplicación"></strong>
+            <span data-en="Open Netflix, YouTube or another Roku app available on the TV." data-es="Abre Netflix, YouTube u otra aplicación de Roku disponible en el TV."></span>
+          </li>
+          <li>
+            <strong data-en="Use your own accounts" data-es="Usa tus propias cuentas"></strong>
+            <span data-en="If an app asks you to sign in, please use your own account and remember to sign out before leaving." data-es="Si una aplicación te pide iniciar sesión, usa tu propia cuenta y recuerda cerrar sesión antes de irte."></span>
+          </li>
+        </ol>
+
+        <p style="margin-top:3px" data-en="You can also use the official Roku mobile app as an alternative remote." data-es="También puedes usar la aplicación oficial de Roku en tu celular como control remoto alternativo."></p>
+      </div>
+    </section>
+
+    <section id="laundry">
+      <div class="section-kicker" data-en="Building amenity" data-es="Servicio del edificio"></div>
+      <h2 class="section-title" data-en="🧺 Laundry" data-es="🧺 Lavandería"></h2>
+
+      <div class="card">
+        <h3 data-en="Shared laundry area" data-es="Zona de lavandería comunal"></h3>
+        <p data-en="The building has a communal laundry area. It is shared with other residents and guests, so please follow the posted rules and leave the area clean after use." data-es="El edificio cuenta con una zona de lavandería comunal. Es compartida con otros residentes y huéspedes, así que sigue las reglas publicadas y deja el área limpia después de usarla."></p>
+
+        <!-- Add the real location / hours / price once known -->
+        <div style="margin-top:15px">
+          <strong data-en="Location:" data-es="Ubicación:"></strong> <span style="color:var(--muted)" data-en="ADD LOCATION" data-es="AGREGAR UBICACIÓN"></span><br>
+          <strong data-en="Hours:" data-es="Horario:"></strong> <span style="color:var(--muted)" data-en="ADD HOURS" data-es="AGREGAR HORARIO"></span><br>
+          <strong data-en="Cost:" data-es="Costo:"></strong> <span style="color:var(--muted)" data-en="ADD COST" data-es="AGREGAR COSTO"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="food">
+      <div class="section-kicker" data-en="Eat & shop nearby" data-es="Comida y compras cerca"></div>
+      <h2 class="section-title" data-en="🍽️ Food, coffee & groceries" data-es="🍽️ Comida, café y supermercados"></h2>
+
+      <div class="two">
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">☕</div>
+            <div>
+              <h3 data-en="Coffee" data-es="Café"></h3>
+              <p data-en="Find nearby cafés for breakfast, coffee or a relaxed afternoon." data-es="Encuentra cafés cercanos para desayunar, tomar un café o disfrutar una tarde tranquila."></p>
+              <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=coffee+near+Movistar+Arena+Bogota" target="_blank" rel="noopener">
+                <span data-en="Find coffee" data-es="Buscar cafés"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">🍴</div>
+            <div>
+              <h3 data-en="Restaurants" data-es="Restaurantes"></h3>
+              <p data-en="Find restaurants nearby for lunch, dinner or a quick bite." data-es="Encuentra restaurantes cercanos para almorzar, cenar o comer algo rápido."></p>
+              <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=restaurants+near+Movistar+Arena+Bogota" target="_blank" rel="noopener">
+                <span data-en="Find restaurants" data-es="Buscar restaurantes"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">🛒</div>
+            <div>
+              <h3 data-en="Supermarkets & grocery stores" data-es="Supermercados y tiendas"></h3>
+              <p data-en="D1, Ara and other nearby stores are useful for groceries, snacks, drinks and everyday essentials." data-es="D1, Ara y otras tiendas cercanas son útiles para comprar alimentos, snacks, bebidas y productos básicos."></p>
+              <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=supermarkets+near+Movistar+Arena+Bogota" target="_blank" rel="noopener">
+                <span data-en="Find supermarkets" data-es="Buscar supermercados"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-kicker" data-en="Right nearby" data-es="Muy cerca"></div>
+      <h2 class="section-title" data-en="📍 Places nearby" data-es="📍 Lugares muy cerca"></h2>
+
+      <div class="two">
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">🎵</div>
+            <div>
+              <h3 data-en="Movistar Arena" data-es="Movistar Arena"></h3>
+              <p data-en="A major venue for concerts and events, just a short distance from The Cozy Corner." data-es="Un importante escenario para conciertos y eventos, a poca distancia de The Cozy Corner."></p>
+              <a class="btn light"
+                 href="https://www.google.com/maps/search/?api=1&query=Movistar+Arena+Bogota"
+                 target="_blank" rel="noopener">
+                <span data-en="Open in Google Maps" data-es="Abrir en Google Maps"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">🌳</div>
+            <div>
+              <h3 data-en="Simón Bolívar Metropolitan Park" data-es="Parque Metropolitano Simón Bolívar"></h3>
+              <p data-en="One of Bogotá's largest parks, great for walking, exercising or relaxing outdoors." data-es="Uno de los parques más grandes de Bogotá, ideal para caminar, hacer ejercicio o relajarse al aire libre."></p>
+              <a class="btn light"
+                 href="https://www.google.com/maps/search/?api=1&query=Parque+Metropolitano+Simon+Bolivar+Bogota"
+                 target="_blank" rel="noopener">
+                <span data-en="Open in Google Maps" data-es="Abrir en Google Maps"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">🌿</div>
+            <div>
+              <h3 data-en="Parque de los Novios" data-es="Parque de los Novios"></h3>
+              <p data-en="A peaceful green space with walking paths and areas to enjoy the outdoors." data-es="Un espacio verde tranquilo con senderos y zonas para disfrutar al aire libre."></p>
+              <a class="btn light"
+                 href="https://www.google.com/maps/search/?api=1&query=Parque+de+los+Novios+Bogota"
+                 target="_blank" rel="noopener">
+                <span data-en="Open in Google Maps" data-es="Abrir en Google Maps"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="place">
+            <div class="place-icon">📚</div>
+            <div>
+              <h3 data-en="Virgilio Barco Library" data-es="Biblioteca Virgilio Barco"></h3>
+              <p data-en="One of Bogotá's most iconic libraries, surrounded by gardens and open spaces." data-es="Una de las bibliotecas más emblemáticas de Bogotá, rodeada de jardines y espacios abiertos."></p>
+              <a class="btn light"
+                 href="https://www.google.com/maps/search/?api=1&query=Biblioteca+Virgilio+Barco+Bogota"
+                 target="_blank" rel="noopener">
+                <span data-en="Open in Google Maps" data-es="Abrir en Google Maps"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3 data-en="🎵 Concert night tip" data-es="🎵 Consejo para la noche del concierto"></h3>
+        <p data-en="If you're attending an event, check the venue's official information for doors, schedules and event-specific entry requirements."
+           data-es="Si vas a un evento, consulta la información oficial del lugar para conocer horarios, apertura de puertas y requisitos específicos de entrada."></p>
+      </div>
+    </section>
+
+    <section id="bogota">
+      <div class="section-kicker" data-en="Explore the city" data-es="Explora la ciudad"></div>
+      <h2 class="section-title" data-en="🏙️ Bogotá" data-es="🏙️ Bogotá"></h2>
+
+      <div class="two">
+        <div class="card">
+          <h3 data-en="🏛️ La Candelaria" data-es="🏛️ La Candelaria"></h3>
+          <p data-en="Historic streets, museums, cafés and some of Bogotá's most iconic landmarks." data-es="Calles históricas, museos, cafés y algunos de los lugares más emblemáticos de Bogotá."></p>
+          <a class="btn light"
+             href="https://www.google.com/maps/search/?api=1&query=La+Candelaria+Bogota"
+             target="_blank" rel="noopener" data-en="Open map" data-es="Abrir mapa"></a>
+        </div>
+
+        <div class="card">
+          <h3 data-en="⛰️ Monserrate" data-es="⛰️ Monserrate"></h3>
+          <p data-en="One of Bogotá's best-known viewpoints over the city." data-es="Uno de los miradores más conocidos de Bogotá sobre la ciudad."></p>
+          <a class="btn light"
+             href="https://www.google.com/maps/search/?api=1&query=Monserrate+Bogota"
+             target="_blank" rel="noopener" data-en="Open map" data-es="Abrir mapa"></a>
+        </div>
+
+        <div class="card">
+          <h3 data-en="🌳 Parque de la 93" data-es="🌳 Parque de la 93"></h3>
+          <p data-en="A popular area for restaurants, cafés and a relaxed afternoon." data-es="Una zona popular para restaurantes, cafés y una tarde tranquila."></p>
+          <a class="btn light"
+             href="https://www.google.com/maps/search/?api=1&query=Parque+de+la+93+Bogota"
+             target="_blank" rel="noopener" data-en="Open map" data-es="Abrir mapa"></a>
+        </div>
+
+        <div class="card">
+          <h3 data-en="🏺 Museo del Oro" data-es="🏺 Museo del Oro"></h3>
+          <p data-en="A major museum showcasing pre-Hispanic goldwork and other archaeological pieces." data-es="Un museo destacado con piezas de orfebrería prehispánica y otros objetos arqueológicos."></p>
+          <a class="btn light"
+             href="https://www.google.com/maps/search/?api=1&query=Museo+del+Oro+Bogota"
+             target="_blank" rel="noopener" data-en="Open map" data-es="Abrir mapa"></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="help">
+      <div class="section-kicker" data-en="We're here to help" data-es="Estamos para ayudarte"></div>
+      <h2 class="section-title" data-en="💬 Need help?" data-es="💬 ¿Necesitas ayuda?"></h2>
+
+      <div class="card">
+        <h3 data-en="Contact your host" data-es="Contacta al anfitrión"></h3>
+        <p data-en="For questions about the apartment or your reservation, please contact your host through Airbnb. For emergencies, use the appropriate local emergency services." data-es="Si tienes preguntas sobre el apartamento o tu reserva, contacta al anfitrión a través de Airbnb. Para emergencias, utiliza los servicios de emergencia correspondientes."></p>
+      </div>
+
+      <div class="card callout">
+        <h3 data-en="⭐ Enjoyed your stay?" data-es="⭐ ¿Disfrutaste tu estancia?"></h3>
+        <p data-en="A review on Airbnb helps us tremendously and lets future guests know what to expect. Thank you for staying at The Cozy Corner!" data-es="Una reseña en Airbnb nos ayuda muchísimo y permite que futuros huéspedes sepan qué esperar. ¡Gracias por hospedarte en The Cozy Corner!"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>The Cozy Corner</strong> · Bogotá, Colombia</p>
+    <p style="margin-top:4px" data-en="We hope you enjoy your stay 🤍" data-es="Esperamos que disfrutes tu estancia 🤍"></p>
+  </footer>
+
+  <a class="top" href="#top" aria-label="Back to top">↑</a>
+
+  <script>
+    function copyWifi(){
+      const name = document.getElementById("wifiName").innerText;
+      const password = document.getElementById("wifiPassword").innerText;
+      const text = `Wi-Fi: ${name}\nPassword: ${password}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById("copyMessage").innerText =
+          currentLanguage === "es" ? "Copiado al portapapeles ✓" : "Copied to your clipboard ✓";
+      }).catch(() => {
+        document.getElementById("copyMessage").innerText =
+          currentLanguage === "es" ? "Copia los datos manualmente." : "Please copy the details manually.";
+      });
+    }
+
+    let currentLanguage = localStorage.getItem("cozyLanguage") || "en";
+
+    function applyLanguage() {
+      document.documentElement.lang = currentLanguage;
+
+      document.querySelectorAll("[data-en][data-es]").forEach(el => {
+        el.textContent = currentLanguage === "es" ? el.dataset.es : el.dataset.en;
+      });
+
+      const btn = document.getElementById("langBtn");
+      if (btn) {
+        btn.textContent = currentLanguage === "es" ? "🇺🇸 English" : "🇪🇸 Español";
+        btn.setAttribute("aria-label",
+          currentLanguage === "es" ? "Switch to English" : "Cambiar a español");
+      }
+
+      const copyMessage = document.getElementById("copyMessage");
+      if (copyMessage) copyMessage.textContent = "";
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === "en" ? "es" : "en";
+      localStorage.setItem("cozyLanguage", currentLanguage);
+      applyLanguage();
+    }
+
+    document.addEventListener("DOMContentLoaded", applyLanguage);
+
+  </script>
+
+</body>
+</html>
